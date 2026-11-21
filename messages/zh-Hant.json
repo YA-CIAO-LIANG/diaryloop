@@ -55,5 +55,60 @@
     "diaryLabel": "今天的日記",
     "diaryPlaceholder": "Today I…",
     "penPal": "筆友回信的樣式：柔和的綠色底。"
+  },
+  "account": {
+    "link": "帳號",
+    "signIn": "登入",
+    "title": "帳號",
+    "signedInAs": "已登入的 Google 帳號",
+    "signOut": "登出",
+    "delete": {
+      "title": "刪除帳號",
+      "lead": "刪除後，所有日記、照片、聊天紀錄、給未來的信與單字本都會立刻永久刪除。",
+      "start": "刪除帳號…",
+      "warning": "這個動作無法復原。刪除後我們也無法幫你找回任何內容。",
+      "confirm": "我了解所有日記與照片都會永久刪除",
+      "submit": "永久刪除我的帳號",
+      "cancel": "取消",
+      "error": {
+        "confirm": "請先勾選確認。",
+        "failed": "刪除失敗，請稍後再試。你的資料仍然保留。"
+      }
+    }
+  },
+  "signin": {
+    "title": "登入",
+    "lead": "用 Google 帳號登入，你的日記會存在雲端，換手機也看得到。",
+    "google": "使用 Google 登入",
+    "unavailable": "登入功能還沒開放。",
+    "promise": {
+      "private": "日記只有你自己看得到，管理員也看不到內容。",
+      "training": "你的日記不會被用來訓練 AI 模型。",
+      "delete": "隨時可以匯出或永久刪除全部日記。"
+    },
+    "result": {
+      "failed": "登入沒有成功，請再試一次。",
+      "cancelled": "已取消登入。",
+      "disabled": "這個帳號已停用。"
+    }
+  },
+  "welcome": {
+    "title": "歡迎來到 DiaryLoop",
+    "lead": "開始寫之前，先確認一件事。",
+    "birthMonth": "你的出生年月",
+    "birthMonthHint": "只用來確認年齡，不會顯示給任何人。",
+    "year": "年",
+    "month": "月",
+    "guardian": "如果你未滿 18 歲：我的家長或監護人已閱讀隱私權政策與服務條款，並同意我使用 DiaryLoop。",
+    "submit": "開始",
+    "error": {
+      "birthMonth": "請選擇正確的出生年月。",
+      "consent": "未滿 18 歲需要家長或監護人同意，請勾選上面的確認。",
+      "failed": "儲存失敗，請稍後再試。"
+    },
+    "tooYoung": {
+      "title": "謝謝你的興趣",
+      "body": "DiaryLoop 目前只開放 13 歲以上使用。為了保護你的隱私，剛才建立的帳號已經刪除，沒有保留任何資料。等你 13 歲以後，歡迎再來！"
+    }
   }
 }

@@ -1,15 +1,18 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { updateSession } from "@/auth/proxy-session";
 import {
   isLocale,
   LOCALE_OVERRIDE_HEADER,
   LOCALE_PARAM,
 } from "@/lib/i18n/config";
+import { dataMode } from "@/lib/runtime";
 import { contentSecurityPolicy, createNonce } from "@/lib/security/csp";
 
 /**
  * Every page request: a fresh CSP nonce, passed to the page in the
  * request headers (Next.js reads it from the CSP header and adds it to its
- * scripts) and sent with the response.
+ * scripts) and sent with the response; then the Supabase session is
+ * refreshed.
  */
 export async function proxy(request: NextRequest) {
   const nonce = createNonce();
@@ -24,7 +27,10 @@ export async function proxy(request: NextRequest) {
   const hl = request.nextUrl.searchParams.get(LOCALE_PARAM);
   if (isLocale(hl)) requestHeaders.set(LOCALE_OVERRIDE_HEADER, hl);
   else requestHeaders.delete(LOCALE_OVERRIDE_HEADER);
-  const response = NextResponse.next({ request: { headers: requestHeaders } });
+  const response =
+    dataMode() === "memory"
+      ? NextResponse.next({ request: { headers: requestHeaders } })
+      : await updateSession(request, requestHeaders);
   response.headers.set("content-security-policy", policy);
   return response;
 }

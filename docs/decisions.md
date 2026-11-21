@@ -60,3 +60,39 @@
 - **決定**：`package.json` 的 `overrides` 把 `playwright-core` 固定在 `@playwright/test` 的版本。
 - **理由**：`@axe-core/playwright` 會裝較新的 `playwright-core`，兩個版本的型別不相容，E2E 無法通過型別檢查。升級 Playwright 時一起改。
 - **要改時**：`package.json` 的 `overrides`。
+
+## D11 資料存取集中在 Store；E2E 用記憶體版（2026-11-21）
+
+- **決定**：
+  - 頁面與 server action 只透過 `getStore()`（`auth/store.ts`）讀寫帳號資料。正式環境是 Supabase 版（`auth/supabase-store.ts`），每次都用登入者自己的工作階段，受 RLS 保護。
+  - E2E 與離線開發用記憶體版（`lib/store/memory.ts`，`DATA_STORE=memory`），另有只在記憶體模式存在的測試登入 `/api/test/sign-in`（帳號 id 必須是 `e2e-…`）。
+  - **Vercel 正式環境一律不允許記憶體模式**（`VERCEL_ENV=production` 時忽略 `DATA_STORE`），有單元測試確認。
+- **理由**：
+  - 日記內容在伺服器端加密（之後的 PR），瀏覽器不直接存取資料庫，所以不需要像 ListenLoop 那樣模擬整個 PostgREST（1,200 行的假伺服器）。
+  - 測試用介面替換是業界常見的 repository pattern；Supabase 版另以 `npm run rls:check`（Supabase 專案建立後）對真實資料庫驗證 RLS。
+- **要改時**：`lib/store/`、`auth/store.ts`、`lib/runtime.ts`、`e2e/fixtures.ts`。
+
+## D12 年齡規則（2026-11-21）
+
+- **決定**：第一次登入後的「歡迎」步驟問出生年月（只問年月）。
+  - 未滿 13 歲：立刻刪除剛建立的帳號並登出，不保留任何資料。
+  - 13～17 歲：需要勾選「家長或監護人已閱讀隱私權政策與服務條款並同意」，記錄同意時間；之後套用適齡規則（M4：聊天時間上限、更保守的內容）。
+  - 18 歲以上：直接開始。
+  - 年齡從出生月份的第一天算起。
+- **理由**：Joe 指定 13 歲以下不開放、13～17 歲需家長同意。只問年月是個資最小化。家長同意採「在裝置上確認」，沒有寄信驗證：沒有寄信服務、也不付費；限制是無法確認勾選的人真的是家長，這點寫在服務條款。
+- **要改時**：`lib/age.ts`、`app/welcome/`、`auth/guard.ts`。
+
+## D13 刪除帳號與管理員權限（2026-11-21）
+
+- **決定**：
+  - 刪除帳號：先刪 Storage 裡 `photos/<id>/`、`audio/<id>/` 的檔案，再刪 Supabase Auth 的使用者；所有資料表都 `on delete cascade`，一次刪乾淨。需要勾選確認。
+  - 秘密金鑰（service role）只用在使用者自己做不到的事（刪除帳號、設定方案、統計），**絕不用來讀日記內容**。
+  - 管理員由環境變數 `ADMIN_EMAILS` 決定，只在伺服器端判斷。
+  - `profiles` 的欄位權限：使用者只能寫出生年月與同意時間，不能改自己的方案。
+- **要改時**：`auth/supabase-store.ts`、`app/account/`、`supabase/migrations/20261121000000_profiles.sql`。
+
+## D14 金鑰由 Joe 用隱藏輸入設定（2026-11-21）
+
+- **決定**：`scripts/set-secret.sh NAME` 用 `read -s` 隱藏輸入，直接經由標準輸入寫進 Vercel（Production）與 GitHub Actions secret，不經過檔案、命令列參數或對話。`--generate` 直接產生隨機金鑰（例如日記加密金鑰）。
+- **理由**：Joe 指定金鑰不能出現在對話、log、檔案或 git。
+- **要改時**：`scripts/set-secret.sh`。
