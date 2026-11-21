@@ -1,13 +1,12 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const PORT = Number(process.env.E2E_PORT ?? 3300);
-const MOCK_PORT = Number(process.env.MOCK_SUPABASE_PORT ?? 54339);
 
 /**
  * End-to-end tests (e2e/) against the production build: run `npm run
- * build:e2e` first, then `npm run test:e2e`. The build talks to a
- * stand-in Supabase (e2e/mock-supabase/) and always uses the fake AI
- * providers, with every API key blanked, so no test can reach a paid API.
+ * build:e2e` first, then `npm run test:e2e`. The server uses the
+ * in-memory store with test sign-in (D11) and the fake AI providers,
+ * with every API key blanked, so no test can reach Supabase or a paid API.
  */
 export default defineConfig({
   testDir: "e2e",
@@ -35,11 +34,12 @@ export default defineConfig({
       command: `npx next start --port ${PORT}`,
       port: PORT,
       env: {
-        SUPABASE_SERVICE_ROLE_KEY: "e2e-secret-key",
+        // The in-memory store and test sign-in (D11); never on Vercel.
+        DATA_STORE: "memory",
+        SUPABASE_SERVICE_ROLE_KEY: "",
         AI_PROVIDERS: "fake",
         AZURE_SPEECH_KEY: "",
         AZURE_OPENAI_API_KEY: "",
-        MOCK_SUPABASE_PORT: String(MOCK_PORT),
       },
       reuseExistingServer: !process.env.CI,
       timeout: 60_000,

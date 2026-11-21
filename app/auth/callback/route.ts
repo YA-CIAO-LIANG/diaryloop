@@ -1,0 +1,34 @@
+import { NextResponse, type NextRequest } from "next/server";
+import { getServerSupabase } from "@/auth/server";
+import { safeNextPath, withSignInResult } from "@/lib/auth/redirect";
+
+/**
+ * Where Google sign-in returns (through Supabase): swaps the one-time
+ * code for a session (cookies), then goes to the page the user started
+ * from. A cancelled or failed sign-in returns with ?signin=….
+ */
+export async function GET(request: NextRequest) {
+  const { searchParams, origin } = request.nextUrl;
+  const next = safeNextPath(searchParams.get("next"));
+  const back = (path: string) => NextResponse.redirect(new URL(path, origin));
+
+  const error = searchParams.get("error");
+  if (error) {
+    return back(
+      withSignInResult(
+        next,
+        error === "access_denied" ? "cancelled" : "failed",
+      ),
+    );
+  }
+  const code = searchParams.get("code");
+  const supabase = await getServerSupabase();
+  if (!code || !supabase) return back(withSignInResult(next, "failed"));
+  const { error: exchangeError } =
+    await supabase.auth.exchangeCodeForSession(code);
+  if (exchangeError) {
+    const banned = /banned/i.test(exchangeError.message);
+    return back(withSignInResult(next, banned ? "disabled" : "failed"));
+  }
+  return back(next);
+}

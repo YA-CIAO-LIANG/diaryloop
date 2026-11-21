@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:e2e": "NEXT_PUBLIC_SUPABASE_URL=http://localhost:${MOCK_SUPABASE_PORT:-54339} NEXT_PUBLIC_SUPABASE_ANON_KEY=e2e-publishable-key next build",
+    "build:e2e": "NEXT_PUBLIC_SUPABASE_URL= NEXT_PUBLIC_SUPABASE_ANON_KEY= next build",
+    "dev:memory": "DATA_STORE=memory AI_PROVIDERS=fake next dev",
     "start": "next start",
     "lint": "eslint .",
     "format": "prettier --write .",

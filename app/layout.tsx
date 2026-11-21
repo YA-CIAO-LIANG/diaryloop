@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
+import { AccountLink } from "@/components/AccountLink";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { clientMessages } from "@/lib/i18n/client-messages";
@@ -50,7 +51,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           {t("skipToContent")}
         </a>
         <NextIntlClientProvider messages={clientMessages(messages)}>
-          <SiteHeader />
+          <SiteHeader>
+            <AccountLink />
+          </SiteHeader>
           <div id="main" className="flex-1">
             {children}
           </div>

@@ -55,5 +55,60 @@
     "diaryLabel": "Today's diary",
     "diaryPlaceholder": "Today I…",
     "penPal": "How the pen pal's letter looks: a soft green."
+  },
+  "account": {
+    "link": "Account",
+    "signIn": "Sign in",
+    "title": "Account",
+    "signedInAs": "Signed in with Google as",
+    "signOut": "Sign out",
+    "delete": {
+      "title": "Delete account",
+      "lead": "Deleting removes every diary entry, photo, chat, letter to your future self, and notebook item, permanently and at once.",
+      "start": "Delete account…",
+      "warning": "This can't be undone. We won't be able to recover anything for you.",
+      "confirm": "I understand all my entries and photos will be deleted forever",
+      "submit": "Delete my account forever",
+      "cancel": "Cancel",
+      "error": {
+        "confirm": "Please tick the box first.",
+        "failed": "Couldn't delete. Please try again later; your data is still here."
+      }
+    }
+  },
+  "signin": {
+    "title": "Sign in",
+    "lead": "Sign in with Google to keep your diary in the cloud, on any device.",
+    "google": "Sign in with Google",
+    "unavailable": "Sign-in isn't open yet.",
+    "promise": {
+      "private": "Only you can read your diary; not even admins can see it.",
+      "training": "Your diary is never used to train AI models.",
+      "delete": "Export or permanently delete everything, any time."
+    },
+    "result": {
+      "failed": "Sign-in didn't work. Please try again.",
+      "cancelled": "Sign-in was cancelled.",
+      "disabled": "This account has been disabled."
+    }
+  },
+  "welcome": {
+    "title": "Welcome to DiaryLoop",
+    "lead": "One quick thing before you start.",
+    "birthMonth": "Your birth month",
+    "birthMonthHint": "Only used to check your age; never shown to anyone.",
+    "year": "Year",
+    "month": "Month",
+    "guardian": "If you are under 18: my parent or guardian has read the Privacy Policy and Terms and agrees that I use DiaryLoop.",
+    "submit": "Start",
+    "error": {
+      "birthMonth": "Please choose a valid birth month.",
+      "consent": "Under 18, a parent or guardian needs to agree. Please tick the box above.",
+      "failed": "Couldn't save. Please try again later."
+    },
+    "tooYoung": {
+      "title": "Thanks for your interest",
+      "body": "DiaryLoop is for people 13 and older. To protect your privacy, the account you just created has been deleted and nothing was kept. You're welcome back once you're 13!"
+    }
   }
 }
