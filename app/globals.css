@@ -3,28 +3,244 @@
 /*
  * DiaryLoop design tokens. Source of truth: docs/design-system.md.
  * Components use these tokens only; never hard-coded colors.
+ * tests/design-tokens.test.ts checks every text pair meets WCAG AA and
+ * that the dark tokens are the same in both dark blocks.
  */
-:root {
+
+/* Light: warm paper. `[data-theme]` works on any element (/styleguide). */
+:root,
+[data-theme="light"] {
   color-scheme: light;
-  --dl-ground: #fbf7ef;
-  --dl-ink: #2b2420;
+
+  --dl-ground: #faf6ee;
+  --dl-surface: #fffcf6;
+  --dl-band: #f3ecdf;
+  --dl-ink: #2e2620;
+  --dl-ink-muted: #6a5d52;
+  --dl-accent: #c0603a;
+  --dl-accent-ink: #94431f;
+  --dl-primary: #94431f;
+  --dl-on-primary: #fffcf6;
+  --dl-line: #e6dccb;
+  --dl-rule: #ece3d3;
+  --dl-success: #3b7048;
+  --dl-error: #a93c34;
+  --dl-focus: #c0603a;
+  --dl-mark: #ffe7a0;
+  --dl-mark-line: #7a5a00;
+  --dl-pal: #eef2e8;
+  --dl-pal-ink: #3f5c46;
 }
 
+:root {
+  /* Chinese uses the system's fonts: no multi-megabyte CJK web fonts. */
+  --dl-cjk-sans:
+    "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", "Microsoft JhengHei",
+    "Heiti TC";
+  --dl-cjk-serif:
+    "Songti TC", "Noto Serif CJK TC", "Noto Serif TC", "PMingLiU", "MingLiU";
+  --dl-font-diary: var(--font-lora), var(--dl-cjk-serif), Georgia, serif;
+  --dl-font-ui:
+    var(--font-nunito-sans), var(--dl-cjk-sans), system-ui, sans-serif;
+
+  --dl-shadow-card:
+    0 1px 2px rgb(60 40 20 / 0.06), 0 4px 16px rgb(60 40 20 / 0.05);
+
+  --dl-duration-theme: 280ms;
+  --dl-duration-press: 120ms;
+  --dl-duration-transition: 160ms;
+}
+
+/* Chinese UI leads with Chinese fonts; English content switches back. */
+:lang(zh-Hant) {
+  --dl-font-ui:
+    var(--dl-cjk-sans), var(--font-nunito-sans), system-ui, sans-serif;
+}
+:lang(en) {
+  --dl-font-ui:
+    var(--font-nunito-sans), var(--dl-cjk-sans), system-ui, sans-serif;
+}
+
+/* Dark: a warm night lamp. Follows the system unless light was chosen. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --dl-ground: #1e1915;
-    --dl-ink: #f1e8dc;
+
+    --dl-ground: #1c1814;
+    --dl-surface: #25201b;
+    --dl-band: #211c17;
+    --dl-ink: #f2e9dd;
+    --dl-ink-muted: #b9ab9a;
+    --dl-accent: #e2875c;
+    --dl-accent-ink: #f0a47e;
+    --dl-primary: #e2875c;
+    --dl-on-primary: #1c1814;
+    --dl-line: #3a322a;
+    --dl-rule: #2f2822;
+    --dl-success: #86c595;
+    --dl-error: #f08c82;
+    --dl-focus: #e2875c;
+    --dl-mark: #5c4714;
+    --dl-mark-line: #f2cf6b;
+    --dl-pal: #232a22;
+    --dl-pal-ink: #a9c7ae;
+    --dl-shadow-card: 0 1px 2px rgb(0 0 0 / 0.3);
   }
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --dl-ground: #1e1915;
-  --dl-ink: #f1e8dc;
+
+  --dl-ground: #1c1814;
+  --dl-surface: #25201b;
+  --dl-band: #211c17;
+  --dl-ink: #f2e9dd;
+  --dl-ink-muted: #b9ab9a;
+  --dl-accent: #e2875c;
+  --dl-accent-ink: #f0a47e;
+  --dl-primary: #e2875c;
+  --dl-on-primary: #1c1814;
+  --dl-line: #3a322a;
+  --dl-rule: #2f2822;
+  --dl-success: #86c595;
+  --dl-error: #f08c82;
+  --dl-focus: #e2875c;
+  --dl-mark: #5c4714;
+  --dl-mark-line: #f2cf6b;
+  --dl-pal: #232a22;
+  --dl-pal-ink: #a9c7ae;
+  --dl-shadow-card: 0 1px 2px rgb(0 0 0 / 0.3);
+}
+
+/*
+ * Tailwind theme: default palettes, fonts, and sizes are reset so only
+ * design-system utilities exist (`bg-red-500` will not compile).
+ */
+@theme inline {
+  --color-*: initial;
+  --color-ground: var(--dl-ground);
+  --color-surface: var(--dl-surface);
+  --color-band: var(--dl-band);
+  --color-ink: var(--dl-ink);
+  --color-ink-muted: var(--dl-ink-muted);
+  --color-accent: var(--dl-accent);
+  --color-accent-ink: var(--dl-accent-ink);
+  --color-primary: var(--dl-primary);
+  --color-on-primary: var(--dl-on-primary);
+  --color-line: var(--dl-line);
+  --color-rule: var(--dl-rule);
+  --color-success: var(--dl-success);
+  --color-error: var(--dl-error);
+  --color-focus: var(--dl-focus);
+  --color-mark: var(--dl-mark);
+  --color-mark-line: var(--dl-mark-line);
+  --color-pal: var(--dl-pal);
+  --color-pal-ink: var(--dl-pal-ink);
+
+  --font-*: initial;
+  --font-diary: var(--dl-font-diary);
+  --font-ui: var(--dl-font-ui);
+
+  --text-*: initial;
+  --text-hero: clamp(2.25rem, 7vw, 4rem);
+  --text-hero--line-height: 1.15;
+  --text-h1: 2rem;
+  --text-h1--line-height: 1.25;
+  --text-h2: 1.5rem;
+  --text-h2--line-height: 1.3;
+  --text-h3: 1.1875rem;
+  --text-h3--line-height: 1.4;
+  --text-diary: 1.125rem;
+  --text-diary--line-height: 1.8;
+  --text-body: 1rem;
+  --text-body--line-height: 1.7;
+  --text-supporting: 0.9375rem;
+  --text-supporting--line-height: 1.6;
+  --text-metadata: 0.8125rem;
+  --text-metadata--line-height: 1.4;
+
+  --radius-*: initial;
+  --radius-base: 10px;
+  --radius-full: 9999px;
+
+  --shadow-*: initial;
+  --shadow-card: var(--dl-shadow-card);
+
+  --container-reading: 38rem;
+  --container-content: 64rem;
 }
 
 body {
   background: var(--dl-ground);
   color: var(--dl-ink);
+  font-family: var(--dl-font-ui);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Theme switches fade; never under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme-switching],
+  [data-theme-switching] * {
+    transition:
+      background-color var(--dl-duration-theme) ease,
+      color var(--dl-duration-theme) ease,
+      border-color var(--dl-duration-theme) ease !important;
+  }
+}
+
+/* Keyboard focus: 2px focus color, 2px offset, on everything. */
+:focus-visible {
+  outline: 2px solid var(--dl-focus);
+  outline-offset: 2px;
+}
+
+/*
+ * Press feedback: a gentle 0.98 scale while pressed. Transform only, so
+ * layout never moves; off under reduced motion.
+ */
+@utility pressable {
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform var(--dl-duration-press) ease-out;
+    &:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+  }
+}
+
+/*
+ * Ruled diary paper: faint lines spaced exactly one line of diary text
+ * apart, so writing sits on the lines. Decorative only.
+ */
+@utility paper-ruled {
+  background-color: var(--dl-surface);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(1.8em - 1px),
+    var(--dl-rule) calc(1.8em - 1px),
+    var(--dl-rule) 1.8em
+  );
+  background-attachment: local;
+  line-height: 1.8;
+}
+
+/* At least 44px tall on touch screens (links in running text excepted). */
+@utility tap {
+  @media (pointer: coarse) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* The highlighter: background plus an underline, never color alone. */
+@utility marked {
+  background-color: var(--dl-mark);
+  text-decoration: underline 2px var(--dl-mark-line);
+  text-underline-offset: 3px;
+  border-radius: 3px;
+  padding-inline: 1px;
+  box-decoration-break: clone;
 }

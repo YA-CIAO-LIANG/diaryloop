@@ -42,3 +42,21 @@
 - **決定**：`vercel.json` 加上 `"framework": "nextjs"`。
 - **理由**：專案是用 CLI 先建立、後放程式，Vercel 沒有自動偵測到框架，第一次部署找不到輸出資料夾而失敗。寫在設定檔裡比只在後台設定更容易追蹤。
 - **要改時**：`vercel.json`。
+
+## D8 設計風格：紙張與夜燈（2026-11-21）
+
+- **決定**：淺色是米白紙張、深棕墨水、陶土色點綴；深色是暖棕的「夜燈」，不是純黑。日記本文用 Lora（書本襯線字）18px、行高 1.8，輸入框畫上對齊行高的淡橫線；介面用 Nunito Sans；中文用系統字型。圓角 10px，按壓只有輕微縮放、沒有漣漪。
+- **理由**：Joe 要「溫暖、私密、有個人感，像日記不像作業」。多數人睡前用手機寫，深色模式不能刺眼，所以避免純黑與高飽和色。每一組文字顏色都有自動對比測試。
+- **要改時**：`app/globals.css`、`docs/design-system.md`；對比測試 `tests/design-tokens.test.ts`。
+
+## D9 正式站網址（2026-11-21）
+
+- **決定**：正式站是 https://diaryloop-two.vercel.app 。
+- **理由**：`diaryloop.vercel.app` 已被其他人使用，Vercel 自動加上 `-two`。之後要換自己的網域時，只需要在 Vercel 加網域並更新 Supabase 與 Google OAuth 的網址。
+- **要改時**：Vercel 專案設定 → Domains。
+
+## D10 固定 playwright-core 的版本（2026-11-21）
+
+- **決定**：`package.json` 的 `overrides` 把 `playwright-core` 固定在 `@playwright/test` 的版本。
+- **理由**：`@axe-core/playwright` 會裝較新的 `playwright-core`，兩個版本的型別不相容，E2E 無法通過型別檢查。升級 Playwright 時一起改。
+- **要改時**：`package.json` 的 `overrides`。

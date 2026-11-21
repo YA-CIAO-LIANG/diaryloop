@@ -7,5 +7,53 @@
   "home": {
     "title": "今天過得怎麼樣？",
     "lead": "用英文寫下來吧，三句就好。"
+  },
+  "common": {
+    "homeLink": "DiaryLoop 首頁",
+    "skipToContent": "跳到主要內容",
+    "footer": {
+      "label": "網站資訊",
+      "tagline": "你的英文日記，只屬於你。",
+      "privacy": "隱私權政策",
+      "terms": "服務條款"
+    }
+  },
+  "settings": {
+    "theme": {
+      "label": "外觀",
+      "system": "跟隨系統",
+      "light": "淺色",
+      "dark": "深色"
+    },
+    "language": {
+      "label": "介面語言",
+      "zhHant": "中文",
+      "en": "EN"
+    }
+  },
+  "styleguide": {
+    "title": "設計系統",
+    "intro": "所有顏色、字型與元件，淺色與深色並排。",
+    "light": "淺色：紙張",
+    "dark": "深色：夜燈",
+    "typeDiary": "日記字體",
+    "sampleDiary": "Today I finally finished my report, and I treated myself to a warm bowl of noodles.",
+    "sampleBody": "介面內文：溫和、簡潔，行距寬鬆。",
+    "sampleSupporting": "次要說明：日期、字數、提示。",
+    "primary": "開始寫",
+    "secondary": "換一題",
+    "ghost": "略過",
+    "danger": "刪除這篇",
+    "disabled": "無法使用",
+    "moods": {
+      "happy": "開心",
+      "calm": "平靜",
+      "tired": "有點累"
+    },
+    "fieldLabel": "標籤",
+    "fieldHint": "用逗號分開，例如：學校、朋友",
+    "diaryLabel": "今天的日記",
+    "diaryPlaceholder": "Today I…",
+    "penPal": "筆友回信的樣式：柔和的綠色底。"
   }
 }
