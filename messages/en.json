@@ -6,7 +6,61 @@
   },
   "home": {
     "title": "How was your day?",
-    "lead": "Write it down in English. Three sentences is enough."
+    "lead": "Write it down in English. Three sentences is enough. Your AI pen pal answers your day first, then gently shows the 3 places that could sound more natural.",
+    "start": "Write today's entry",
+    "signedInStart": "Write today's entry",
+    "privacyNote": "Only you can read your diary, and it's never used to train AI.",
+    "deleted": "Your account and all entries have been permanently deleted. Thank you for writing here.",
+    "flowTitle": "About 20–30 minutes a day; 5 minutes on tired days",
+    "flow": [
+      {
+        "title": "Warm-up",
+        "minutes": "2 min",
+        "body": "Three past mistakes: read the Chinese, write the right English."
+      },
+      {
+        "title": "Write",
+        "minutes": "10–15 min",
+        "body": "Three sentences, a paragraph, or free writing. Don't know a word? Write it in Chinese in brackets, like (夜市)."
+      },
+      {
+        "title": "A letter back",
+        "minutes": "3 min",
+        "body": "Your pen pal answers what you wrote, then marks the 3 most important things."
+      },
+      {
+        "title": "Listen to your entry",
+        "minutes": "3 min",
+        "body": "Hear the corrected version, read along, and turn 3 Chinese sentences back into English."
+      }
+    ],
+    "whyTitle": "A diary, not homework",
+    "why": [
+      {
+        "title": "Your day first, English second",
+        "body": "The pen pal writes back like a friend, never lecturing. On days you just want to write, choose \"Just write, no feedback\"."
+      },
+      {
+        "title": "Only 3 things marked",
+        "body": "No page full of red. Smaller points wait under \"More suggestions\" until you want them."
+      },
+      {
+        "title": "Reviews, scheduled for you",
+        "body": "Mistakes and new phrases come back in your warm-up after 1, 3, 7, and 14 days."
+      },
+      {
+        "title": "Missing a day is okay",
+        "body": "Three sentences counts. One save a week keeps your streak going."
+      }
+    ],
+    "privacyTitle": "Your diary is yours alone",
+    "privacy": [
+      "Entries are encrypted and only you can read them; not even admins.",
+      "No selling data, no ads, no tracking.",
+      "Export or permanently delete everything, any time."
+    ],
+    "privacyLink": "Read the Privacy Policy",
+    "scienceNote": "These choices draw on research into retrieval practice, spacing, focused feedback, and habit formation. The research says this approach is reasonable; it can't promise how much any one person improves."
   },
   "common": {
     "homeLink": "DiaryLoop home",
@@ -110,5 +164,212 @@
       "title": "Thanks for your interest",
       "body": "DiaryLoop is for people 13 and older. To protect your privacy, the account you just created has been deleted and nothing was kept. You're welcome back once you're 13!"
     }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "effective": "Effective: November 21, 2026",
+    "summaryTitle": "The short version",
+    "summary": [
+      "Only you can read your diary. Admins can't see any diary content, only number statistics (such as how many entries were written today across the site).",
+      "Diary text, AI feedback, chats, and letters to your future self are encrypted before they're stored.",
+      "AI feedback is processed by Microsoft Azure OpenAI. Your diary is never used to train any AI model.",
+      "We don't sell data, show ads, or use third-party tracking or analytics.",
+      "You can export all your entries, or permanently delete an entry or your whole account, at any time."
+    ],
+    "sections": [
+      {
+        "title": "Who this policy covers",
+        "body": [
+          "DiaryLoop (\"we\") is an English diary practice website, currently run by an individual developer. This policy explains what we collect, how we use and protect it, and your rights.",
+          "We handle personal data under Taiwan's Personal Data Protection Act."
+        ]
+      },
+      {
+        "title": "What we collect",
+        "body": [
+          "Account: when you sign in with Google, we receive your email and Google account identifier. We never receive your Google password, and we don't read your Gmail, Drive, or contacts.",
+          "Age: your birth month (only to apply the age rules) and, if you're under 18, when a parent or guardian agreed.",
+          "What you write: diary text, mood, weather, tags, photos, AI feedback, chats with the AI, letters to your future self, your notebook of words and mistakes, and practice answers.",
+          "Usage records: the time, tokens, characters, and estimated cost of each AI call, to manage limits and costs. These records contain none of your text.",
+          "Settings: interface language, appearance, reminder time, voice preferences. Some are kept in your browser (cookies or localStorage)."
+        ]
+      },
+      {
+        "title": "How we use it",
+        "body": [
+          "To run the service: keep your diary, produce AI feedback and read-aloud audio, schedule reviews, and show your progress.",
+          "To manage costs and prevent abuse: count each account's AI use.",
+          "To improve the service: only number statistics with no content (for example entries completed per day). We never read your diary to improve the product.",
+          "We never use your data for advertising, never sell it, and never use your diary to train any AI model."
+        ]
+      },
+      {
+        "title": "How AI handles your diary",
+        "body": [
+          "When you ask for AI feedback, read-aloud, or a chat, we send only what's needed (this entry, this chat's messages) to Microsoft Azure OpenAI (language model) or Azure Speech (read-aloud), and receive the result.",
+          "Under Microsoft's terms, content sent to Azure OpenAI is not used to train models. To detect abuse, Microsoft may keep content for up to 30 days before deleting it. Processing may happen in Azure data centers outside Taiwan.",
+          "With \"Just write, no feedback\", the entry is never sent to AI.",
+          "AI suggestions can be wrong; use them as learning help only."
+        ]
+      },
+      {
+        "title": "Where it's stored and how it's protected",
+        "body": [
+          "Data is stored with Supabase, in a data center in Tokyo, Japan.",
+          "Diary text, AI feedback, chats, and letters to your future self are encrypted with AES-256-GCM before they're stored; the key lives only in the server's configuration, never in the database.",
+          "Photos are kept in private storage and opened only by you, through short-lived links. Before upload they're compressed on your device and stripped of EXIF data such as GPS location.",
+          "Row level security in the database lets only each row's owner read or write it.",
+          "The database is backed up once a day, encrypted, and backups are kept for 14 days.",
+          "All connections use HTTPS. The site loads no third-party scripts."
+        ]
+      },
+      {
+        "title": "Who can see your data",
+        "body": [
+          "Only you.",
+          "The admin pages show statistics without content; they have no way to read entries, photos, or chats.",
+          "We disclose data only when the law requires it (such as a court order), and tell you when the law allows.",
+          "Service providers that process data for us: Supabase (database and storage), Vercel (hosting), Microsoft Azure (AI and read-aloud), Google (sign-in), and GitHub (temporary storage of encrypted backups). They may process data only on our instructions."
+        ]
+      },
+      {
+        "title": "How long we keep it, and deleting it",
+        "body": [
+          "Your content is kept until you delete it.",
+          "Deleting an entry or photo removes it from the database and storage at once.",
+          "Deleting your account (on the Account page) permanently removes all entries, photos, chats, letters, notebook items, and settings at once.",
+          "Copies in backups disappear within 14 days as backups expire.",
+          "Export: you can download all your entries from the Account page (see site announcements for availability)."
+        ]
+      },
+      {
+        "title": "Young people",
+        "body": [
+          "DiaryLoop is not for anyone under 13. If the welcome step finds you're under 13, the new account is deleted at once and nothing is kept.",
+          "If you're 13 to 17, a parent or guardian must read this policy and the Terms and agree before you use DiaryLoop, and more careful rules apply (such as a chat time limit).",
+          "Parents or guardians may contact us to see or delete their child's data."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "body": [
+          "Under Article 3 of the Personal Data Protection Act, you may ask to see, copy, add to or correct, stop the collection or use of, and delete your personal data. Most of this can be done on the site (viewing, exporting, deleting); for the rest, contact us."
+        ]
+      },
+      {
+        "title": "Cookies and browser storage",
+        "body": [
+          "We use only necessary cookies: your sign-in session and interface language. Preferences such as appearance are kept in your browser's localStorage.",
+          "No advertising or tracking cookies, and no third-party analytics."
+        ]
+      },
+      {
+        "title": "If there's a breach",
+        "body": [
+          "If a breach may affect your data, we'll tell affected users as soon as we understand it: what happened, what it affects, and what we're doing."
+        ]
+      },
+      {
+        "title": "Changes",
+        "body": [
+          "We'll announce important changes on the site and update the effective date."
+        ]
+      }
+    ],
+    "contactEmail": "For privacy questions, email {email}.",
+    "contactGithub": "For privacy questions, look for our contact details on the Account page or the site footer; until a contact email is published, you can reach us through the DiaryLoop project on GitHub (please never paste diary content in public comments)."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "effective": "Effective: November 21, 2026",
+    "summaryTitle": "The short version",
+    "summary": [
+      "Your diary belongs to you. We process it only to provide the service.",
+      "You must be 13 or older; under 18, a parent or guardian must agree.",
+      "The AI is a practice partner. It can be wrong, and it isn't a teacher, doctor, or counselor.",
+      "The service is free for now and may change or be interrupted."
+    ],
+    "sections": [
+      {
+        "title": "The service",
+        "body": [
+          "DiaryLoop offers English diary writing, AI feedback, read-aloud, review, and progress statistics. Some features have usage limits, described on the site's plans page."
+        ]
+      },
+      {
+        "title": "Who may use it",
+        "body": [
+          "You must be at least 13. If you're 13 to 17, a parent or guardian must read and agree to these Terms and the Privacy Policy. Consent is confirmed by a checkbox on the device, which we can't verify one by one; if your parent or guardian hasn't agreed, please don't use the service."
+        ]
+      },
+      {
+        "title": "Your account",
+        "body": [
+          "You sign in with your Google account; keep it secure, and sign out on shared devices."
+        ]
+      },
+      {
+        "title": "Your content",
+        "body": [
+          "You own the entries, photos, and everything else you write.",
+          "You let us process it only as needed to run the service (storing, encrypting, sending to AI for feedback, reading aloud), for nothing else, and never to train AI models. This permission ends when you delete the content or your account.",
+          "Please don't upload content you don't have the right to use, or photos with other people's sensitive personal data."
+        ]
+      },
+      {
+        "title": "Rules",
+        "body": [
+          "Don't use the service for anything illegal, to harass others, or to upload illegal or infringing content.",
+          "Don't try to break, disrupt, or overuse the service (for example by calling the AI with scripts), or to reach other people's data.",
+          "If you break these rules, we may limit or disable your account."
+        ]
+      },
+      {
+        "title": "What the AI is and isn't",
+        "body": [
+          "The AI pen pal and chat partner is a friendly English practice partner, not a person, and not a teacher, doctor, lawyer, or counselor. Its replies and English suggestions can be wrong; use your own judgment.",
+          "It won't act as a romantic partner or take part in sexual or violent role-play.",
+          "If you're in crisis or thinking about hurting yourself, please reach out now to someone you trust or to professional help: in Taiwan call 1925 (24 hours); in the US call or text 988; in an emergency call 110 or 119 (Taiwan) or 911 (US)."
+        ]
+      },
+      {
+        "title": "Fees",
+        "body": [
+          "There's a free plan. Paid plans aren't available yet; before they are, prices and contents will be clearly announced, and you'll never be charged without agreeing."
+        ]
+      },
+      {
+        "title": "Changes and interruptions",
+        "body": [
+          "We try to keep the service stable but can't promise it will be uninterrupted or error-free. We may change features or limits, and will announce major changes in advance. If the service ends, we'll announce it at least 30 days before, so you have time to export your diary."
+        ]
+      },
+      {
+        "title": "Limitation of liability",
+        "body": [
+          "To the extent the law allows, the service is provided as is. We aren't liable for indirect losses from using or being unable to use it, except for damage caused by our intent or gross negligence."
+        ]
+      },
+      {
+        "title": "Ending",
+        "body": [
+          "You may delete your account at any time. We may disable an account that breaks these Terms, with notice where possible."
+        ]
+      },
+      {
+        "title": "Governing law",
+        "body": [
+          "These Terms are governed by the laws of the Republic of China (Taiwan). The Taiwan Taipei District Court is the court of first instance for disputes."
+        ]
+      },
+      {
+        "title": "Changes to these Terms",
+        "body": [
+          "We'll announce important changes on the site and update the effective date. Continuing to use the service after a change means you accept the new Terms."
+        ]
+      }
+    ],
+    "contactEmail": "For questions about these Terms, email {email}.",
+    "contactGithub": "For questions about these Terms, until a contact email is published, you can reach us through the DiaryLoop project on GitHub."
   }
 }

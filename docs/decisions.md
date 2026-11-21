@@ -96,3 +96,21 @@
 - **決定**：`scripts/set-secret.sh NAME` 用 `read -s` 隱藏輸入，直接經由標準輸入寫進 Vercel（Production）與 GitHub Actions secret，不經過檔案、命令列參數或對話。`--generate` 直接產生隨機金鑰（例如日記加密金鑰）。
 - **理由**：Joe 指定金鑰不能出現在對話、log、檔案或 git。
 - **要改時**：`scripts/set-secret.sh`。
+
+## D15 Dependabot 不提主版本升級（2026-11-21）
+
+- **決定**：npm 套件只自動提次版本與修補版本（每週一個合併 PR）；主版本升級（例如 TypeScript 7、ESLint 10）由 Claude 等相關套件支援後手動升級。安全性更新仍會照常提出。
+- **理由**：專案建立第一天就收到 4 個主版本 PR，其中 TypeScript 7 的 CI 失敗。主版本常需要一起改設定，一次一個自動 PR 容易壞。
+- **要改時**：`.github/dependabot.yml` 的 `ignore`。
+
+## D16 聯絡方式（2026-11-21）
+
+- **決定**：隱私權政策與服務條款的聯絡信箱讀環境變數 `NEXT_PUBLIC_CONTACT_EMAIL`；沒有設定時，寫「透過 GitHub 上的專案聯絡」並提醒不要在公開留言貼日記。
+- **理由**：不把 Joe 的個人信箱寫進公開 repo。**需要 Joe 決定**要公開哪個聯絡信箱（建議另開一個專用信箱）。
+- **要改時**：Vercel 環境變數 `NEXT_PUBLIC_CONTACT_EMAIL`；`components/LegalPage.tsx`。
+
+## D17 隱私權政策照實寫出 AI 與資料的處理（2026-11-21）
+
+- **決定**：政策寫明：資料在 Supabase 東京；日記等文字 AES-256-GCM 加密；照片移除 EXIF；Azure OpenAI 不用客戶資料訓練模型，但 Microsoft 為了偵測濫用可能保存最長 30 天，處理可能在台灣以外；備份加密保留 14 天；依個資法第 3 條的權利；未滿 13 歲不保留資料；服務終止前 30 天公告。
+- **理由**：Joe 要求特別說明保存、用途、AI 處理、不訓練、刪除方式。寫「不會保存」之類絕對的話比較好聽，但不正確；照實寫才經得起檢查。
+- **要改時**：`messages/*.json` 的 `privacy`、`terms`。若 Azure 申請了濫用監控豁免，要改第 4 節。

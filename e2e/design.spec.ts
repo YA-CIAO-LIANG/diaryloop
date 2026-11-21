@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-for (const path of ["/", "/styleguide"]) {
+for (const path of ["/", "/styleguide", "/privacy", "/terms", "/signin"]) {
   test(`${path} has no WCAG 2.1 AA violations @mobile`, async ({ page }) => {
     await page.goto(path);
     const results = await new AxeBuilder({ page })
@@ -36,7 +36,7 @@ test("switching to English changes the page language", async ({ page }) => {
 
 test("no horizontal scroll at 320px @mobile", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 });
-  for (const path of ["/", "/styleguide"]) {
+  for (const path of ["/", "/styleguide", "/privacy", "/terms", "/signin"]) {
     await page.goto(path);
     const wide = await page.evaluate(
       () => document.documentElement.scrollWidth > window.innerWidth,
