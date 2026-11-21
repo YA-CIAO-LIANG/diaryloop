@@ -18,6 +18,11 @@ updates:
     groups:
       npm-minor-and-patch:
         update-types: [minor, patch]
+    # Major versions wait until Next.js and its ESLint config support them
+    # (docs/decisions.md D15); security updates still come.
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: /
