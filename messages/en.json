@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "siteName": "DiaryLoop",
+    "title": "DiaryLoop: a little English diary, every day",
+    "description": "An English diary in 5 to 30 minutes a day. An AI pen pal answers your day first, then gently helps your English sound more natural."
+  },
+  "home": {
+    "title": "How was your day?",
+    "lead": "Write it down in English. Three sentences is enough."
+  }
+}
