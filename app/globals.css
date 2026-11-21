@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+/*
+ * DiaryLoop design tokens. Source of truth: docs/design-system.md.
+ * Components use these tokens only; never hard-coded colors.
+ */
+:root {
+  color-scheme: light;
+  --dl-ground: #fbf7ef;
+  --dl-ink: #2b2420;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --dl-ground: #1e1915;
+    --dl-ink: #f1e8dc;
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --dl-ground: #1e1915;
+  --dl-ink: #f1e8dc;
+}
+
+body {
+  background: var(--dl-ground);
+  color: var(--dl-ink);
+}

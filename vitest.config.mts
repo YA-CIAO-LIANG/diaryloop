@@ -1,0 +1,32 @@
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  plugins: [react()],
+  // Resolve the "@/..." alias from tsconfig.json.
+  resolve: { tsconfigPaths: true },
+  test: {
+    projects: [
+      {
+        // Pure logic: fast, no DOM.
+        extends: true,
+        test: {
+          name: "unit",
+          environment: "node",
+          include: ["tests/**/*.test.ts", "lib/**/*.test.ts"],
+          setupFiles: ["tests/setup-network.ts"],
+        },
+      },
+      {
+        // Components: rendered in a simulated browser DOM.
+        extends: true,
+        test: {
+          name: "dom",
+          environment: "jsdom",
+          include: ["tests/**/*.test.tsx"],
+          setupFiles: ["tests/setup-network.ts", "tests/setup-dom.ts"],
+        },
+      },
+    ],
+  },
+});
