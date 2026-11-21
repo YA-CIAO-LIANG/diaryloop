@@ -6,6 +6,8 @@ import { SECURITY_HEADERS } from "./lib/security/csp";
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
+  // This folder is the app's root (a lockfile higher up isn't ours).
+  outputFileTracingRoot: import.meta.dirname,
   // No "X-Powered-By: Next.js": it only tells attackers what to try.
   poweredByHeader: false,
   outputFileTracingExcludes: {

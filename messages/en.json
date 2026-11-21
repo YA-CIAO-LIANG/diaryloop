@@ -7,5 +7,53 @@
   "home": {
     "title": "How was your day?",
     "lead": "Write it down in English. Three sentences is enough."
+  },
+  "common": {
+    "homeLink": "DiaryLoop home",
+    "skipToContent": "Skip to main content",
+    "footer": {
+      "label": "Site information",
+      "tagline": "Your English diary, only yours.",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
+  },
+  "settings": {
+    "theme": {
+      "label": "Appearance",
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "language": {
+      "label": "Interface language",
+      "zhHant": "中文",
+      "en": "EN"
+    }
+  },
+  "styleguide": {
+    "title": "Design system",
+    "intro": "Every color, typeface, and component, light and dark side by side.",
+    "light": "Light: paper",
+    "dark": "Dark: night lamp",
+    "typeDiary": "Diary type",
+    "sampleDiary": "Today I finally finished my report, and I treated myself to a warm bowl of noodles.",
+    "sampleBody": "Interface text: gentle, simple, with room to breathe.",
+    "sampleSupporting": "Supporting text: dates, word counts, hints.",
+    "primary": "Start writing",
+    "secondary": "Another prompt",
+    "ghost": "Skip",
+    "danger": "Delete this entry",
+    "disabled": "Unavailable",
+    "moods": {
+      "happy": "Happy",
+      "calm": "Calm",
+      "tired": "A bit tired"
+    },
+    "fieldLabel": "Tags",
+    "fieldHint": "Separate with commas, e.g. school, friends",
+    "diaryLabel": "Today's diary",
+    "diaryPlaceholder": "Today I…",
+    "penPal": "How the pen pal's letter looks: a soft green."
   }
 }
